@@ -8,10 +8,6 @@ class UIAssets {
     return 'assets/images/$imageName';
   }
 
-  static String getIcon(String imageName) {
-    return 'assets/images/icons/$imageName';
-  }
-
   static String getSvg(String svgName) {
     return 'assets/svg/$svgName';
   }

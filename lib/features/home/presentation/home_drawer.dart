@@ -9,7 +9,6 @@ import '../../../core/resources/ui_assets.dart';
 import '../../../widgets/dialogs.dart';
 import '../../../widgets/shimmer_effect.dart';
 import '../../auth/di/injection.dart';
-import '../../auth/presentation/shared/auth_wrapper.dart';
 import '../../auth/presentation/shared/logout_dialog.dart';
 
 class HomeDrawer extends ConsumerWidget {
