@@ -33,7 +33,7 @@ class HomeDrawer extends ConsumerWidget {
               _DrawerList(
                 title: 'What\'s New !',
                 onPressed: () {},
-                iconImage: 'coupon_icon.svg',
+                iconImage: 'offer_icon.svg',
                 // trailingWidget: true,
               ),
               _DrawerList(
@@ -42,17 +42,16 @@ class HomeDrawer extends ConsumerWidget {
                   onPressed: () {
                     // AppUtils.launchAppStore();
                   }),
-              AuthWidgetWrapper(
-                  child: _DrawerList(
-                      title: 'Log out',
-                      iconImage: 'logout_icon.svg',
-                      onPressed: () {
-                        showAnimatedDialog(
-                            context: context,
-                            widget: LogOutDialog(() {
-                              ref.read(authProvider).logout();
-                            }));
-                      })),
+              _DrawerList(
+                  title: 'Log out',
+                  iconImage: 'logout_icon.svg',
+                  onPressed: () {
+                    showAnimatedDialog(
+                        context: context,
+                        widget: LogOutDialog(() {
+                          ref.read(authProvider).logout();
+                        }));
+                  }),
             ],
           ),
         ),
@@ -107,49 +106,6 @@ class _DrawerHeader extends HookConsumerWidget {
   }
 }
 
-class _DrawerHeaderPlaceHolder extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return DrawerHeader(
-      decoration: BoxDecoration(
-        color: AppColors.primaryColor(1),
-      ),
-      child: InkWell(
-        onTap: () {},
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Welcome',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(color: Colors.white, fontSize: 16),
-                ),
-                SBC.mH,
-                Text(
-                  'Please Login !',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: Colors.white),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
 class _DrawerHeaderShimmerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -193,14 +149,12 @@ class _DrawerHeaderShimmerView extends StatelessWidget {
 }
 
 class _DrawerList extends StatelessWidget {
-  final bool? trailingWidget;
   final String title;
   final String iconImage;
 
   final VoidCallback? onPressed;
 
   const _DrawerList({
-    this.trailingWidget = false,
     required this.title,
     required this.iconImage,
     this.onPressed,
@@ -210,11 +164,11 @@ class _DrawerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.only(right: 10),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
       onTap: onPressed,
       title: Text(
         title,
-        style: Theme.of(context).textTheme.bodyText2,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
       leading: SvgPicture.asset(
         UIAssets.getSvg(
