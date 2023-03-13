@@ -20,38 +20,37 @@ class HomeDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Drawer(
-      child: SafeArea(
-        child: SmartRefresher(
-          controller: refreshController,
-          onRefresh: () {},
-          header: const WaterDropHeader(),
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              _DrawerList(
-                title: 'What\'s New !',
-                onPressed: () {},
-                iconImage: 'offer_icon.svg',
-                // trailingWidget: true,
-              ),
-              _DrawerList(
-                  title: 'Rate our App',
-                  iconImage: 'rate_icon.svg',
-                  onPressed: () {
-                    // AppUtils.launchAppStore();
-                  }),
-              _DrawerList(
-                  title: 'Log out',
-                  iconImage: 'logout_icon.svg',
-                  onPressed: () {
-                    showAnimatedDialog(
-                        context: context,
-                        widget: LogOutDialog(() {
-                          ref.read(authProvider).logout();
-                        }));
-                  }),
-            ],
-          ),
+      child: SmartRefresher(
+        controller: refreshController,
+        onRefresh: () {},
+        header: const WaterDropHeader(),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const _DrawerHeader(),
+            _DrawerList(
+              title: 'What\'s New !',
+              onPressed: () {},
+              iconImage: 'offer_icon.svg',
+              // trailingWidget: true,
+            ),
+            _DrawerList(
+                title: 'Rate our App',
+                iconImage: 'rate_icon.svg',
+                onPressed: () {
+                  // AppUtils.launchAppStore();
+                }),
+            _DrawerList(
+                title: 'Log out',
+                iconImage: 'logout_icon.svg',
+                onPressed: () {
+                  showAnimatedDialog(
+                      context: context,
+                      widget: LogOutDialog(() {
+                        ref.read(authProvider).logout();
+                      }));
+                }),
+          ],
         ),
       ),
     );
