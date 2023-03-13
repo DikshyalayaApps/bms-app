@@ -1,12 +1,16 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bms_app/features/clock_in/presentation/clock_in.dart';
 import 'package:bms_app/features/home/presentation/home.dart';
+import 'package:bms_app/features/my_availability/presentation/my_availability.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../features/auth/presentation/screens/login_page.dart';
 import '../features/onboarding/presentation/splash_page.dart';
+import '../features/schedule/presentation/schedule.dart';
+import '../features/shift_availability/presentation/shift_availability.dart';
 import 'auth_guard.dart';
-
+// flutter packages pub run build_runner build --delete-conflicting-outputs
 @MaterialAutoRouter(
   replaceInRouteName: 'Page|Screen,Route',
   routes: <AutoRoute>[
@@ -14,6 +18,26 @@ import 'auth_guard.dart';
     AutoRoute(page: LoginPage, path: 'login'),
     AutoRoute(
       page: HomePage,
+      guards: [RouteGuard],
+    ),
+    AutoRoute(
+      page: ShiftAvailability,
+      guards: [RouteGuard],
+    ),
+    AutoRoute(
+      page: SchedulePage,
+      guards: [RouteGuard],
+    ),
+    AutoRoute(
+      page: MyAvailability,
+      guards: [RouteGuard],
+    ),
+    AutoRoute(
+      page: SchedulePage,
+      guards: [RouteGuard],
+    ),
+    AutoRoute(
+      page: ClockInPage,
       guards: [RouteGuard],
     ),
     // redirect all other paths
