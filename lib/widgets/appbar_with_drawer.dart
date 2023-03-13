@@ -1,7 +1,7 @@
+import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../core/resources/size_constants.dart';
 import '../core/resources/ui_assets.dart';
 import '../features/auth/presentation/shared/auth_wrapper.dart';
 
@@ -23,7 +23,7 @@ class AppBarWithDrawer extends ConsumerWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: showDrawer == true
           ? Padding(
-              padding: const EdgeInsets.only(left: SC.lW),
+              padding:  context.paddingLow,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

@@ -51,7 +51,7 @@ class ApplicationState extends ConsumerState<Application> {
       supportedLocales: const [
         Locale('en'),
       ],
-      theme: appTheme(),
+      theme: appTheme(context),
     );
   }
 }

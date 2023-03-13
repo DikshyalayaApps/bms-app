@@ -191,19 +191,17 @@ extension SizedBoxExtension on BuildContext {
 extension ThemeExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
 
-  // TextTheme get textTheme => CustomTextTheme(this);
+  TextTheme get textTheme => Theme.of(this).textTheme;
 
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
 
   MaterialColor get randomColor => Colors.primaries[Random().nextInt(17)];
 
-  Color get primaryColor => const Color(0xff3663F2);
+  Color get primaryColor => const Color(0xFF4C8FFE);
+  Color get secondaryColor => const Color(0xFF8E44AD);
+  Color get scaffoldBgColor => const Color(0xFFF8F8F8);
 
   Color get primaryVariantColor => const Color(0xffEFF4FA);
-
-  Color get textColor => const Color(0xFF394C66);
-
-  Color get secondaryTextColor => const Color(0xff9AA1B4);
 
   Color get yellowSea => const Color(0xffF1AE04);
 
@@ -233,7 +231,7 @@ extension ThemeExtension on BuildContext {
       ? const Color.fromARGB(255, 100, 210, 255)
       : const Color.fromARGB(255, 90, 200, 250);
 
-  Color get blue => isDarkMode
+  Color get black => isDarkMode
       ? const Color.fromARGB(255, 10, 132, 255)
       : const Color.fromARGB(255, 0, 122, 255);
 
@@ -273,11 +271,11 @@ extension ThemeExtension on BuildContext {
       ? const Color.fromARGB(255, 28, 28, 30)
       : const Color.fromARGB(255, 242, 242, 247);
 
-  Color get label => isDarkMode
+  Color get textColor => isDarkMode
       ? const Color.fromARGB(255, 255, 255, 255)
       : const Color.fromARGB(255, 0, 0, 0);
 
-  Color get secondaryLabel => isDarkMode
+  Color get secondaryTextColor => isDarkMode
       ? const Color(0xff8083A3)
       : const Color.fromARGB(153, 60, 60, 67);
 

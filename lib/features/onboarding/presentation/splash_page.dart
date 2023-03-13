@@ -64,7 +64,7 @@ class _SplashPageState extends ConsumerState<SplashPage>
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
-              AppLogo(),
+              AppLogo(aspectRatio: 3,),
               // SlideTransition(
               //   position: _animation as Animation<Offset>,
               //   child: const AspectRatio(

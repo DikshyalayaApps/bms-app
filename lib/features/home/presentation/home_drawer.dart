@@ -1,10 +1,9 @@
+import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../../../core/resources/app_colors.dart';
-import '../../../core/resources/size_constants.dart';
 import '../../../core/resources/ui_assets.dart';
 import '../../../widgets/dialogs.dart';
 import '../../../widgets/shimmer_effect.dart';
@@ -70,14 +69,14 @@ class _DrawerHeader extends HookConsumerWidget {
       onTap: () {},
       child: DrawerHeader(
         decoration: BoxDecoration(
-          color: AppColors.primaryColor(1),
+          color: context.primaryColor,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SBC.lW,
+            context.emptySizedHeightBoxNormal,
             Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +109,7 @@ class _DrawerHeaderShimmerView extends StatelessWidget {
   Widget build(BuildContext context) {
     return DrawerHeader(
       decoration: BoxDecoration(
-        color: AppColors.primaryColor(1),
+        color: context.primaryColor,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -124,7 +123,7 @@ class _DrawerHeaderShimmerView extends StatelessWidget {
               radius: 100,
             ),
           ),
-          SBC.lW,
+          context.emptySizedHeightBoxNormal,
           Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -134,7 +133,7 @@ class _DrawerHeaderShimmerView extends StatelessWidget {
                 height: 15,
                 width: 160,
               ),
-              SBC.mH,
+              context.emptySizedHeightBoxNormal,
               const ShimmerWidget(
                 height: 15,
                 width: 140,
@@ -173,7 +172,6 @@ class _DrawerList extends StatelessWidget {
         UIAssets.getSvg(
           iconImage,
         ),
-        color: AppColors.colorBlack(0.5),
         height: 19,
         width: 19,
       ),

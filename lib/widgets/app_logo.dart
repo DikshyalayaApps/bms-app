@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../core/resources/ui_assets.dart';
 
 class AppLogo extends StatelessWidget {
@@ -14,8 +13,8 @@ class AppLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: aspectRatio,
-      child: SvgPicture.asset(
-    UIAssets.getSvg('app_logo.svg'),
+      child: Image.asset(
+    UIAssets.getImage('launcher_icon.png'),
       ),
     );
   }

@@ -1,7 +1,7 @@
+import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/material.dart';
-import 'app_colors.dart';
 
-ThemeData appTheme() {
+ThemeData appTheme(BuildContext context) {
   final inputDecorationTheme = InputDecorationTheme(
     contentPadding:
         const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
@@ -10,32 +10,32 @@ ThemeData appTheme() {
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(5),
       borderSide: BorderSide(
-        color: AppColors.primaryColor(1),
+        color: context.primaryColor,
       ),
     ),
     focusedErrorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(5),
       borderSide: BorderSide(
-        color: AppColors.primaryColor(1),
+        color: context.primaryColor,
       ),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(5),
       borderSide: BorderSide(
-        color: AppColors.primaryColor(1),
+        color: context.primaryColor,
       ),
     ),
     focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
-          color: AppColors.primaryColor(1),
+          color: context.primaryColor,
         ),
         borderRadius: BorderRadius.circular(5)),
     alignLabelWithHint: true,
   );
 
   final buttonTheme = ButtonThemeData(
-    colorScheme: ColorScheme.light(primary: AppColors.primaryColor(1)),
-    buttonColor: AppColors.primaryColor(1),
+    colorScheme: ColorScheme.light(primary: context.primaryColor),
+    buttonColor: context.primaryColor,
     textTheme: ButtonTextTheme.primary,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8),
@@ -43,12 +43,11 @@ ThemeData appTheme() {
   );
 
   return ThemeData(
-    primaryColor: AppColors.primaryColor(1),
-    secondaryHeaderColor: AppColors.secondaryColor(1),
-    disabledColor: AppColors.disabledColor(),
-    scaffoldBackgroundColor: AppColors.scaffoldBgColor(1),
+    primaryColor: context.primaryColor,
+    secondaryHeaderColor: context.secondaryColor,
+    scaffoldBackgroundColor: context.scaffoldBgColor,
     fontFamily: 'Roboto',
-    dividerColor: AppColors.dividerColor(),
+    dividerColor: context.grey,
     // appBarTheme: AppBarTheme(systemOverlayStyle: SystemUiOverlayStyle(
     //   systemNavigationBarColor: primaryColor, // Navigation bar
     //   statusBarColor: Colors.transparent,
@@ -65,7 +64,7 @@ ThemeData appTheme() {
     // inputDecorationTheme: inputDecorationTheme, /// customized this
     buttonTheme: buttonTheme,
     colorScheme: ColorScheme(
-      primary: AppColors.primaryColor(1),
+      primary: context.primaryColor,
       onPrimary: Colors.white,
       background: Colors.white,
       error: Colors.red,
@@ -77,9 +76,9 @@ ThemeData appTheme() {
       onBackground: Colors.white,
       brightness: Brightness.light,
     ),
-    iconTheme: IconThemeData(color: AppColors.primaryColor(1)),
+    iconTheme: IconThemeData(color: context.primaryColor),
     appBarTheme: AppBarTheme(
-        color: AppColors.primaryColor(1),
+        color: context.primaryColor,
         iconTheme: const IconThemeData(color: Colors.white, size: 20),
         actionsIconTheme:
             const IconThemeData(color: Colors.black, opacity: 0.7, size: 28)),
