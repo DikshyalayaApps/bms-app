@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../features/auth/presentation/screens/login_page.dart';
+import '../features/covid_survey/presentation/covid_survey_page.dart';
 import '../features/onboarding/presentation/splash_page.dart';
 import '../features/schedule/presentation/schedule.dart';
 import '../features/shift_availability/presentation/shift_availability.dart';
@@ -21,24 +22,29 @@ import 'auth_guard.dart';
       guards: [RouteGuard],
     ),
     AutoRoute(
-      page: ShiftAvailability,
-      guards: [RouteGuard],
+      page: ShiftAvailabilityPage,
+      // guards: [RouteGuard],
     ),
     AutoRoute(
       page: SchedulePage,
-      guards: [RouteGuard],
+      // guards: [RouteGuard],
     ),
     AutoRoute(
-      page: MyAvailability,
-      guards: [RouteGuard],
+      page: MyAvailabilityPage,
+      // guards: [RouteGuard],
     ),
     AutoRoute(
       page: SchedulePage,
-      guards: [RouteGuard],
+      // guards: [RouteGuard],
     ),
     AutoRoute(
       page: ClockInPage,
-      guards: [RouteGuard],
+      // guards: [RouteGuard],
+    ),
+
+    AutoRoute(
+      page: CovidSurveyPage,
+      // guards: [RouteGuard],
     ),
     // redirect all other paths
     // RedirectRoute(path: '*', redirectTo: 'login'),

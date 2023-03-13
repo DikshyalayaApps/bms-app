@@ -6,12 +6,10 @@ import '../core/resources/ui_assets.dart';
 import '../features/auth/presentation/shared/auth_wrapper.dart';
 
 class AppBarWithDrawer extends ConsumerWidget implements PreferredSizeWidget {
-  final Widget? appLogo;
   final Widget title;
   final bool? showDrawer;
 
   const AppBarWithDrawer({
-    this.appLogo,
     this.showDrawer = true,
     required this.title,
     Key? key,
@@ -37,11 +35,6 @@ class AppBarWithDrawer extends ConsumerWidget implements PreferredSizeWidget {
                       ),
                       width: 20,
                     ),
-                  ),
-                  if (appLogo != null)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: appLogo!,
                     )
                 ],
               ),
