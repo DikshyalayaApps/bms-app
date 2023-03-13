@@ -50,11 +50,11 @@ class AppSettingRepositoryImpl extends AppSettingRepository {
 
   @override
   Future<int?> getScheduleDay(int forDays) async {
-    final _lastRequestTime =
+    final lastRequestTime =
         await secureStorage.read(key: StorageConfigs.kLastRequestTimeStamp);
-    if (_lastRequestTime != null) {
+    if (lastRequestTime != null) {
       var time =
-          DateTime.fromMillisecondsSinceEpoch(int.parse(_lastRequestTime));
+          DateTime.fromMillisecondsSinceEpoch(int.parse(lastRequestTime));
       var day = forDays -
           DateTime.now()
               .difference(time)

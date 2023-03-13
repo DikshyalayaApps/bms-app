@@ -21,9 +21,9 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<bool> isAuthenticated() async {
-    final _token = await localDataSource.getLastAccessToken();
-    final _rfToken = await localDataSource.getLastRefreshToken();
-    return _token != null && _rfToken != null;
+    final token = await localDataSource.getLastAccessToken();
+    final rfToken = await localDataSource.getLastRefreshToken();
+    return token != null && rfToken != null;
   }
 
   @override

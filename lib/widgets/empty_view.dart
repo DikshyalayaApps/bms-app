@@ -8,7 +8,7 @@ class EmptyView extends StatelessWidget {
   final bool showError;
   final VoidCallback? onRetry;
 
-  EmptyView({this.message, this.showError = true, this.onRetry});
+  const EmptyView({super.key, this.message, this.showError = true, this.onRetry});
 
   @override
   Widget build(BuildContext context) {

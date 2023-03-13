@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bms_app/routes/di.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
@@ -27,21 +28,21 @@ class ApplicationState extends ConsumerState<Application> {
 
   @override
   Widget build(BuildContext context) {
-    final _router = ref.watch(routerProvider);
+    final router = ref.watch(routerProvider);
     return MaterialApp.router(
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       useInheritedMediaQuery: true,
       title: kAppName,
       routerDelegate: AutoRouterDelegate(
-        _router,
+        router,
         navigatorObservers: () => [
           MyRouteObserver(),
           SentryNavigatorObserver(),
           // FirebaseAnalyticsObserver(analytics: ref.watch(analyticsProvider)),
         ],
       ),
-      routeInformationParser: _router.defaultRouteParser(),
+      routeInformationParser: router.defaultRouteParser(),
       locale: DevicePreview.locale(context),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
@@ -66,11 +67,13 @@ class ProviderLogger extends ProviderObserver {
       Object? newValue,
       ProviderContainer container,
       ) {
-    print('''
+    if (kDebugMode) {
+      print('''
 ╔
   "provider": "${provider.name ?? provider.runtimeType}",
 ╝
 ''');
+    }
   }
 }
 // "newValue": "$newValue"

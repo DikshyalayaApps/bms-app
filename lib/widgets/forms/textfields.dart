@@ -31,7 +31,7 @@ class PrimaryTextField extends HookWidget {
   // final Function onSaved;
 
   const PrimaryTextField(
-      {this.enable = true,
+      {super.key, this.enable = true,
       required this.onSaved,
       this.innerIcon,
       this.label,
@@ -87,7 +87,7 @@ class PrimaryTextField extends HookWidget {
             initialValue: initialValue,
             keyboardType: textInputType ?? TextInputType.text,
             obscureText: isPasswordVisible.value,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
             readOnly: isReadOnly ?? false,
             // enabled: isTextFieldEnabled??true,
             decoration: InputDecoration(
@@ -97,7 +97,7 @@ class PrimaryTextField extends HookWidget {
               errorText: errorText,
               counterText: "",
               errorMaxLines: 2,
-              contentPadding: contentPadding?? EdgeInsets.symmetric(horizontal: 10.0),
+              contentPadding: contentPadding?? const EdgeInsets.symmetric(horizontal: 10.0),
               // labelText:
               hintText: hintTxt ?? "",
               // hintStyle:Theme.of(context).textTheme.bodyText1 ,
@@ -188,7 +188,7 @@ class PrimaryRadioButton extends HookWidget {
   // final Function onSaved;
 
   const PrimaryRadioButton(
-      {required this.options,
+      {super.key, required this.options,
         required this.label,
        required this.validator,
         this.initialValue,

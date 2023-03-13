@@ -18,7 +18,6 @@ class _SplashPageState extends ConsumerState<SplashPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
-  late Animation _animation;
   late Animatable animatable;
 
   @override
@@ -37,8 +36,6 @@ class _SplashPageState extends ConsumerState<SplashPage>
     );
     _animationController =
         AnimationController(duration: const Duration(seconds: 2), vsync: this);
-    _animation = animatable.animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.easeInCirc));
     _animationController.forward().then((value) {
       ref.read(splashProvider).startupCheck();
     });

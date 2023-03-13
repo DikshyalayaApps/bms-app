@@ -23,7 +23,7 @@ class AppUtils {
       var words = sentence.split(" ");
       return words.take(length).join(" ");
     } catch (e) {
-      return "$sentence";
+      return sentence;
     }
   }
 
@@ -183,9 +183,9 @@ class AppUtils {
   /// generate random string based on passed length //default = 6
   static String generateRandomString({int? len}) {
     var r = Random();
-    const _chars =
+    const chars =
         'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-    return List.generate(len ?? 6, (index) => _chars[r.nextInt(_chars.length)])
+    return List.generate(len ?? 6, (index) => chars[r.nextInt(chars.length)])
         .join()
         .toUpperCase();
   }

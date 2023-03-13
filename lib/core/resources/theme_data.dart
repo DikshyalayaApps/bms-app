@@ -2,36 +2,6 @@ import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/material.dart';
 
 ThemeData appTheme(BuildContext context) {
-  final inputDecorationTheme = InputDecorationTheme(
-    contentPadding:
-        const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-    // fillColor: Color(0XFFF0F0F0),
-    filled: true,
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(5),
-      borderSide: BorderSide(
-        color: context.primaryColor,
-      ),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(5),
-      borderSide: BorderSide(
-        color: context.primaryColor,
-      ),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(5),
-      borderSide: BorderSide(
-        color: context.primaryColor,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(
-          color: context.primaryColor,
-        ),
-        borderRadius: BorderRadius.circular(5)),
-    alignLabelWithHint: true,
-  );
 
   final buttonTheme = ButtonThemeData(
     colorScheme: ColorScheme.light(primary: context.primaryColor),

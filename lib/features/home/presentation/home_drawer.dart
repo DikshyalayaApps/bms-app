@@ -116,10 +116,10 @@ class _DrawerHeaderShimmerView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
+          const SizedBox(
             height: 65,
             width: 65,
-            child: const ShimmerWidget(
+            child: ShimmerWidget(
               radius: 100,
             ),
           ),

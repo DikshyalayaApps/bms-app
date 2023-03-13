@@ -1,3 +1,4 @@
+import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yaml/yaml.dart';
@@ -20,7 +21,7 @@ class AppVersionBuilder extends StatelessWidget {
 
           return Text(
             'Version: ${version.split("+")[0]}',
-            style: textStyle ?? Theme.of(context).textTheme.bodyText1,
+            style: textStyle ?? context.textTheme.bodyLarge,
           );
         });
   }

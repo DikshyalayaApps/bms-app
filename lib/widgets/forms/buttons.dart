@@ -1,3 +1,4 @@
+import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -82,7 +83,7 @@ class PrimaryButton extends StatelessWidget {
           onPressed();
         },
         style: ElevatedButton.styleFrom(
-          primary: !isDisabled
+          backgroundColor: !isDisabled
               ? (color ?? Theme.of(context).primaryColor)
               : Colors.black45,
           elevation: 0,
@@ -102,7 +103,7 @@ class PrimaryButton extends StatelessWidget {
                     child: icon,
                   ),
                 Text(title,
-                    style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                    style: context.textTheme.bodyLarge?.copyWith(
                           color: textColor ?? Colors.white,
                           fontSize: textSize ?? 14,
                         ))
@@ -128,7 +129,7 @@ class PrimaryOutlinedButton extends StatelessWidget {
   final double? iconSize;
   final double? textSize;
 
-  PrimaryOutlinedButton(
+  const PrimaryOutlinedButton(
       {Key? key,
       this.radius,
       this.width,
@@ -151,7 +152,7 @@ class PrimaryOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        primary: borderColor ?? Theme.of(context).primaryColor,
+        backgroundColor: borderColor ?? Theme.of(context).primaryColor,
         elevation: 0,
         minimumSize: Size(width ?? double.infinity, height ?? 40.0),
         side: BorderSide(

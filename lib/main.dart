@@ -23,7 +23,7 @@ Future<void> main() async {
   runApp(DevicePreview(
     enabled: kDebugMode, //kDebugMode
     builder: (context) => ProviderScope(
-        overrides: [],
+        overrides: const [],
         observers: [ProviderLogger()],
         child: const Application()),
   ));

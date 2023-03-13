@@ -26,7 +26,7 @@ class LogOutDialog extends StatelessWidget {
             Text(
               'Are you sure you want to\nlog out?',
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(
               height: 30,

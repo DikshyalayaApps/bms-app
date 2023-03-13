@@ -44,7 +44,9 @@ class CustomInterceptor extends QueuedInterceptor {
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
 
-    print('══🌍 🌍  Retrieving data from network 🌍 🌍══');
+    if (kDebugMode) {
+      print('══🌍 🌍  Retrieving data from network 🌍 🌍══');
+    }
     if (options.headers[StorageConfigs.requiresToken] == false) {
       // print('══ ✋🏻✋🏻 Refresh Token [Auth] Not required ✋🏻✋🏻══');
       // if the request doesn't need token, then just continue to the next interceptor
@@ -86,7 +88,6 @@ class CustomInterceptor extends QueuedInterceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) async {
-
     if (isNormalRequest == false) {
       if (err.response?.statusCode == 401) {
         if (_dio.options.headers[StorageConfigs.retryCount] == 1) {

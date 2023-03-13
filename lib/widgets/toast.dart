@@ -1,3 +1,4 @@
+import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -23,9 +24,9 @@ class CustomToast {
           ),
           Text(
             toastMessage,
-            style: Theme.of(context)
+            style: context
                 .textTheme
-                .bodyText2
+                .bodyMedium
                 ?.apply(color: Colors.white),
           ),
         ],
