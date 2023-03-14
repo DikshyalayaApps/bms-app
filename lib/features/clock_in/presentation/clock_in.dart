@@ -12,12 +12,18 @@ class ClockInPage extends HookConsumerWidget {
     Key? key,
   }) : super(key: key);
 
-  List<String> getTimeList() {
+  Future<List<String>> getTimeList() async {
     List<String> timeList = [];
-    DateTime time = DateTime(2080, 1, 1, 0, 0); // start time at 12:00 AM
-    while (time.hour < 24) { // loop until we reach 11:55 PM
-      timeList.add("${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')} ${time.hour < 12 ? 'AM' : 'PM'}");
-      time = time.add(const Duration(minutes: 5)); // add 5 minutes to current time
+    DateTime time = DateTime(2022, 1, 1, 0, 0); // start time at 12:00 AM
+    while (time.hour < 24) {
+      // loop until we reach 11:55 PM
+      timeList.add(
+          "${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')} ${time.hour < 12 ? 'AM' : 'PM'}");
+      time =
+          time.add(const Duration(minutes: 5)); // add 5 minutes to current time
+      await Future.delayed(const Duration(
+          milliseconds:
+              1)); // add a small delay to allow other operations to run
     }
     return timeList;
   }
@@ -51,7 +57,7 @@ class ClockInPage extends HookConsumerWidget {
                     FormBuilderValidators.required(
                         errorText: 'Start Time is required'),
                   ]),
-                  items: getTimeList()
+                  items: ['']
                       .map((t) => DropdownMenuItem(
                             value: t,
                             child: Text('$t'),
