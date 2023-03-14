@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:bms_app/features/home/presentation/home_drawer.dart';
-import 'package:bms_app/features/my_availability/presentation/my_availability.dart';
 import 'package:bms_app/routes/router.gr.dart';
 import 'package:bms_app/widgets/appbar_with_drawer.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,7 @@ class HomePage extends HookConsumerWidget {
     Key? key,
   }) : super(key: key);
 
+  // usertype = dsp
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -43,7 +43,7 @@ class _Items extends ConsumerWidget {
             child: SizedBox(
               height: 80,
               child: Card(
-                color: context.randomColor,
+                color: context.primaryColor,
                 child: Center(
                     child: Text(
                   [

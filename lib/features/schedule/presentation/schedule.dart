@@ -28,19 +28,25 @@ class _Items extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-      child: ListView.builder(
-        itemCount: 5,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (BuildContext context, int index) {
-          return SizedBox(
-            height: 40,
-            child: Card(
-              color: context.randomColor,
-              child: const Text('My Schedule'),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(5, (index) => SizedBox(
+          child: Container(
+            color: context.grey2,
+            width: double.infinity,
+            margin: context.paddingLow,
+            padding: context.paddingExtraLow,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text('3/11/2023: 10:00 PM - 06:00 AM'),
+                const Text('CRCDD - Florence Street'),
+                const Text('61 Florence St, Yonkers, NY 10704'),
+              ],
             ),
-          );
-        },
+          ),
+        )),
       ),
     );
   }

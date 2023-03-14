@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-
 class PrimaryTextField extends HookWidget {
   final String? hintTxt;
   final String? initialValue;
@@ -31,7 +30,8 @@ class PrimaryTextField extends HookWidget {
   // final Function onSaved;
 
   const PrimaryTextField(
-      {super.key, this.enable = true,
+      {super.key,
+      this.enable = true,
       required this.onSaved,
       this.innerIcon,
       this.label,
@@ -75,9 +75,10 @@ class PrimaryTextField extends HookWidget {
               ),
             ],
           ),
-        if (label != null)  SizedBox(
-          height: labelHeight ?? 10,
-        ),
+        if (label != null)
+          SizedBox(
+            height: labelHeight ?? 10,
+          ),
         Container(
           alignment: Alignment.centerLeft,
           child: FormBuilderTextField(
@@ -97,7 +98,8 @@ class PrimaryTextField extends HookWidget {
               errorText: errorText,
               counterText: "",
               errorMaxLines: 2,
-              contentPadding: contentPadding?? const EdgeInsets.symmetric(horizontal: 10.0),
+              contentPadding: contentPadding ??
+                  const EdgeInsets.symmetric(horizontal: 10.0),
               // labelText:
               hintText: hintTxt ?? "",
               // hintStyle:Theme.of(context).textTheme.bodyText1 ,
@@ -159,7 +161,7 @@ class PrimaryTextField extends HookWidget {
                       child: suffixIcon ?? const Text('')),
             ),
             onSaved: onSaved,
-            maxLines: maxLine??1,
+            maxLines: maxLine ?? 1,
             maxLength: maxLength,
             validator: validator,
             name: keyName ?? "null",
@@ -184,23 +186,22 @@ class PrimaryRadioButton extends HookWidget {
   final double? borderRadius;
   final double? labelHeight;
 
-
   // final Function onSaved;
 
   const PrimaryRadioButton(
-      {super.key, required this.options,
-        required this.label,
-       required this.validator,
-        this.initialValue,
-        required this.onSaved,
-        required this.onChanged,
-        this.borderRadius,
-
-        this.prefixIcon,
-        this.labelHeight,
-        this.textInputType,
-        this.maxLength,
-        this.fieldKey});
+      {super.key,
+      required this.options,
+      required this.label,
+      required this.validator,
+      this.initialValue,
+      required this.onSaved,
+      required this.onChanged,
+      this.borderRadius,
+      this.prefixIcon,
+      this.labelHeight,
+      this.textInputType,
+      this.maxLength,
+      this.fieldKey});
 
   @override
   Widget build(BuildContext context) {
@@ -228,11 +229,124 @@ class PrimaryRadioButton extends HookWidget {
         FormBuilderRadioGroup(
           key: fieldKey,
           initialValue: initialValue,
-          decoration:  const InputDecoration(contentPadding: EdgeInsets.zero,), //border: InputBorder.none
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.zero,
+          ),
+          //border: InputBorder.none
           onSaved: onSaved,
           onChanged: onChanged,
           validator: validator,
-          options: options, name: label,
+          options: options,
+          name: label,
+        ),
+      ],
+    );
+  }
+}
+
+class PrimaryDropDownField extends HookWidget {
+  final String hintTxt;
+  final String? initialValue;
+  final List<DropdownMenuItem<String>> items;
+  final FormFieldSetter<String>? onSaved;
+  final FormFieldValidator<String>? validator;
+  final ValueChanged<String?> onChanged;
+  final TextInputType? textInputType;
+  final int? maxLength;
+  final String? label;
+  final GlobalKey<FormBuilderFieldState>? fieldKey;
+  final IconData? prefixIcon;
+  final double? borderRadius;
+  final double? labelHeight;
+
+  // final Function onSaved;
+
+  const PrimaryDropDownField(
+      {super.key,
+      required this.items,
+      this.label,
+      this.validator,
+      this.initialValue,
+      required this.onSaved,
+      required this.onChanged,
+      this.borderRadius,
+      this.prefixIcon,
+      required this.hintTxt,
+      this.labelHeight,
+      this.textInputType,
+      this.maxLength,
+      this.fieldKey});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (prefixIcon != null)
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: Icon(
+                  prefixIcon,
+                ),
+              ),
+            if (label != null)
+              Text(
+                label!,
+              ),
+          ],
+        ),
+        SizedBox(
+          height: labelHeight ?? 10,
+        ),
+        FormBuilderDropdown<String>(
+          key: fieldKey,
+          initialValue: initialValue,
+          style: Theme.of(context).textTheme.bodyLarge,
+          name: '',
+          isExpanded: true,
+          decoration: InputDecoration(
+            hintStyle: Theme.of(context).textTheme.bodyMedium,
+            hintText: hintTxt,
+            isDense: true,
+            errorMaxLines: 2,
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+            filled: true,
+            errorBorder: OutlineInputBorder(
+              borderRadius:
+                  BorderRadius.all(Radius.circular(borderRadius ?? 5.0)),
+              borderSide: const BorderSide(color: Colors.red),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius:
+                  BorderRadius.all(Radius.circular(borderRadius ?? 5.0)),
+              borderSide: const BorderSide(color: Colors.grey),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius:
+                  BorderRadius.all(Radius.circular(borderRadius ?? 5.0)),
+              borderSide: const BorderSide(color: Colors.grey),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderRadius:
+                  BorderRadius.all(Radius.circular(borderRadius ?? 5.0)),
+              borderSide: const BorderSide(color: Colors.grey),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius:
+                  BorderRadius.all(Radius.circular(borderRadius ?? 5.0)),
+              borderSide: const BorderSide(color: Colors.grey),
+            ),
+          ),
+          // initialValue: 'Male',
+          onSaved: onSaved,
+          isDense: true,
+          onChanged: onChanged,
+          validator: validator,
+          items: items,
         ),
       ],
     );
