@@ -37,7 +37,7 @@ Future showAnimatedDialog(
 class CustomLoadingDialog extends StatelessWidget {
   final double? width;
   final double? height;
-  const CustomLoadingDialog({this.width, this.height});
+  const CustomLoadingDialog({super.key, this.width, this.height});
   @override
   Widget build(BuildContext context) {
     return Material(

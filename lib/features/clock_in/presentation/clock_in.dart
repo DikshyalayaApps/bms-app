@@ -1,4 +1,6 @@
 import 'package:bms_app/core/utils/context_extension.dart';
+import 'package:bms_app/features/clock_in/presentation/time_data_provider.dart';
+import 'package:bms_app/widgets/forms/buttons.dart';
 import 'package:bms_app/widgets/forms/textfields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -12,29 +14,15 @@ class ClockInPage extends HookConsumerWidget {
     Key? key,
   }) : super(key: key);
 
-  Future<List<String>> getTimeList() async {
-    List<String> timeList = [];
-    DateTime time = DateTime(2022, 1, 1, 0, 0); // start time at 12:00 AM
-    while (time.hour < 24) {
-      // loop until we reach 11:55 PM
-      timeList.add(
-          "${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')} ${time.hour < 12 ? 'AM' : 'PM'}");
-      time =
-          time.add(const Duration(minutes: 5)); // add 5 minutes to current time
-      await Future.delayed(const Duration(
-          milliseconds:
-              1)); // add a small delay to allow other operations to run
-    }
-    return timeList;
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _formKey = useMemoized(GlobalKey<FormBuilderState>.new);
+    final formKey = useMemoized(GlobalKey<FormBuilderState>.new);
+    final state = ref.watch(timeListProvider);
+    final timeList = state.asData?.value ?? [''];
     return Scaffold(
       appBar: const AppBarWithOutDrawer(title: Text('Clock In')),
       body: FormBuilder(
-        key: _formKey,
+        key: formKey,
         child: SingleChildScrollView(
           child: Padding(
             padding: context.paddingLow,
@@ -57,10 +45,10 @@ class ClockInPage extends HookConsumerWidget {
                     FormBuilderValidators.required(
                         errorText: 'Start Time is required'),
                   ]),
-                  items: ['']
+                  items: timeList
                       .map((t) => DropdownMenuItem(
                             value: t,
-                            child: Text('$t'),
+                            child: Text(t),
                           ))
                       .toList(),
                   onSaved: (newValue) {},
@@ -68,16 +56,16 @@ class ClockInPage extends HookConsumerWidget {
                 ),
                 context.emptySizedHeightBoxLow,
                 PrimaryDropDownField(
-                  hintTxt: 'Select a Start Time',
-                  label: 'Start Time',
+                  hintTxt: 'Select a Meal Time',
+                  label: 'Meal Time',
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(
-                        errorText: 'Start Time is required'),
+                        errorText: 'Meal Time is required'),
                   ]),
-                  items: ['']
+                  items: timeList
                       .map((t) => DropdownMenuItem(
                             value: t,
-                            child: Text('$t'),
+                            child: Text(t),
                           ))
                       .toList(),
                   onSaved: (newValue) {},
@@ -85,16 +73,16 @@ class ClockInPage extends HookConsumerWidget {
                 ),
                 context.emptySizedHeightBoxLow,
                 PrimaryDropDownField(
-                  hintTxt: 'Select a Start Time',
-                  label: 'Start Time',
+                  hintTxt: 'No Meal Reason',
+                  label: 'Select a No Meal Reason',
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(
-                        errorText: 'Start Time is required'),
+                        errorText: 'No Meal Reason is required'),
                   ]),
-                  items: ['']
+                  items: ['Emergency']
                       .map((t) => DropdownMenuItem(
                             value: t,
-                            child: Text('$t'),
+                            child: Text(t),
                           ))
                       .toList(),
                   onSaved: (newValue) {},
@@ -102,21 +90,28 @@ class ClockInPage extends HookConsumerWidget {
                 ),
                 context.emptySizedHeightBoxLow,
                 PrimaryDropDownField(
-                  hintTxt: 'Select a Start Time',
-                  label: 'Start Time',
+                  hintTxt: 'Select a End Time',
+                  label: 'End Time',
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(
-                        errorText: 'Start Time is required'),
+                        errorText: 'End Time is required'),
                   ]),
-                  items: ['']
+                  items: timeList
                       .map((t) => DropdownMenuItem(
                             value: t,
-                            child: Text('$t'),
+                            child: Text(t),
                           ))
                       .toList(),
                   onSaved: (newValue) {},
                   onChanged: (value) {},
                 ),
+                context.emptySizedHeightBoxLow,
+                Center(
+                    child: PrimaryButton(
+                  onPressed: () {},
+                  title: 'SAVE',
+                  // width: context.highValue,
+                ))
               ],
             ),
           ),

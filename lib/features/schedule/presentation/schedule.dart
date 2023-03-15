@@ -1,8 +1,5 @@
 import 'package:bms_app/core/utils/context_extension.dart';
-import 'package:bms_app/features/home/presentation/home_drawer.dart';
-import 'package:bms_app/widgets/appbar_with_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../widgets/appbar_without_drawer.dart';
@@ -39,10 +36,10 @@ class _Items extends ConsumerWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const Text('3/11/2023: 10:00 PM - 06:00 AM'),
-                const Text('CRCDD - Florence Street'),
-                const Text('61 Florence St, Yonkers, NY 10704'),
+              children: const [
+                Text('3/11/2023: 10:00 PM - 06:00 AM'),
+                Text('CRCDD - Florence Street'),
+                Text('61 Florence St, Yonkers, NY 10704'),
               ],
             ),
           ),
