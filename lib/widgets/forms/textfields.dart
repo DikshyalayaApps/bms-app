@@ -178,13 +178,8 @@ class PrimaryRadioButton extends HookWidget {
   final FormFieldSetter onSaved;
   final FormFieldValidator validator;
   final ValueChanged onChanged;
-  final TextInputType? textInputType;
-  final int? maxLength;
   final String label;
   final GlobalKey<FormBuilderFieldState>? fieldKey;
-  final IconData? prefixIcon;
-  final double? borderRadius;
-  final double? labelHeight;
 
   // final Function onSaved;
 
@@ -196,50 +191,26 @@ class PrimaryRadioButton extends HookWidget {
       this.initialValue,
       required this.onSaved,
       required this.onChanged,
-      this.borderRadius,
-      this.prefixIcon,
-      this.labelHeight,
-      this.textInputType,
-      this.maxLength,
       this.fieldKey});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (prefixIcon != null)
-              Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child: Icon(
-                  prefixIcon,
-                ),
-              ),
-            Text(
-              label,
-            ),
-          ],
-        ),
-        SizedBox(
-          height: labelHeight ?? 10,
-        ),
-        FormBuilderRadioGroup(
-          key: fieldKey,
-          initialValue: initialValue,
-          decoration: const InputDecoration(
-            contentPadding: EdgeInsets.zero,
-          ),
-          //border: InputBorder.none
-          onSaved: onSaved,
-          onChanged: onChanged,
-          validator: validator,
-          options: options,
-          name: label,
-        ),
-      ],
+    return FormBuilderRadioGroup(
+      key: fieldKey,
+      initialValue: initialValue,
+      materialTapTargetSize:
+      MaterialTapTargetSize.shrinkWrap,
+      decoration: const InputDecoration(
+        contentPadding: EdgeInsets.zero,
+        isDense: true,
+        border: InputBorder.none,
+      ),
+      //border: InputBorder.none
+      onSaved: onSaved,
+      onChanged: onChanged,
+      validator: validator,
+      options: options,
+      name: label,
     );
   }
 }
