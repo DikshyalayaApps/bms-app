@@ -150,10 +150,10 @@ class AppUtils {
     }
   }
 
-  static void externalShare(String message,{String? title}) async{
+  static void externalShare(String message, {String? title}) async {
     await Share.share(
       message,
-      subject: title??'Share',
+      subject: title ?? 'Share',
       sharePositionOrigin: const Rect.fromLTWH(0, 0, 10, 10),
     );
   }

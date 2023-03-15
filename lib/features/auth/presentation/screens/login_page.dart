@@ -53,7 +53,8 @@ class LoginPage extends ConsumerWidget {
           },
           orElse: () {});
     });
-    return Scaffold(body: SafeArea(
+    return Scaffold(
+        body: SafeArea(
       child: DarkThemeAnnotatedRegion(
         child: DismissFocusOverlay(
           child: SingleChildScrollView(
@@ -66,7 +67,9 @@ class LoginPage extends ConsumerWidget {
                   const Center(
                     child: Padding(
                       padding: EdgeInsets.only(top: 20),
-                      child: AppLogo(aspectRatio: 3,),
+                      child: AppLogo(
+                        aspectRatio: 3,
+                      ),
                     ),
                   ),
                   Padding(
@@ -119,12 +122,11 @@ class LoginPage extends ConsumerWidget {
                           onTap: () {},
                           child: Container(
                               alignment: Alignment.centerRight,
-                              margin: const EdgeInsets.symmetric(
-                                  horizontal: 10),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Text(
                                 'Forgot your password ?',
-                                style: context.textTheme.bodyMedium
-                                    ?.copyWith(
+                                style: context.textTheme.bodyMedium?.copyWith(
                                     fontWeight: FontWeight.w600,
                                     color: context.textColor),
                               )),
@@ -132,8 +134,7 @@ class LoginPage extends ConsumerWidget {
                         context.emptySizedHeightBoxNormal,
                         PrimaryButton(
                           onPressed: () {
-                            if (_formKey.currentState!
-                                .saveAndValidate()) {
+                            if (_formKey.currentState!.saveAndValidate()) {
                               // ref.read(loginProvider.notifier).login(_loginParams);
                               _loginSuccess(context);
                             }

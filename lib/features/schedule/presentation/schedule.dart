@@ -27,23 +27,25 @@ class _Items extends ConsumerWidget {
       padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: List.generate(5, (index) => SizedBox(
-          child: Container(
-            color: context.grey2,
-            width: double.infinity,
-            margin: context.paddingLow,
-            padding: context.paddingExtraLow,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Text('3/11/2023: 10:00 PM - 06:00 AM'),
-                Text('CRCDD - Florence Street'),
-                Text('61 Florence St, Yonkers, NY 10704'),
-              ],
-            ),
-          ),
-        )),
+        children: List.generate(
+            5,
+            (index) => SizedBox(
+                  child: Container(
+                    color: context.grey4,
+                    width: double.infinity,
+                    margin: context.paddingLow,
+                    padding: context.paddingExtraLow,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Text('3/11/2023: 10:00 PM - 06:00 AM'),
+                        Text('CRCDD - Florence Street'),
+                        Text('61 Florence St, Yonkers, NY 10704'),
+                      ],
+                    ),
+                  ),
+                )),
       ),
     );
   }

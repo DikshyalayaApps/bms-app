@@ -14,8 +14,7 @@ class CustomInterceptor extends QueuedInterceptor {
   bool isNormalRequest = false;
   AuthNotifier authNotifier;
 
-  CustomInterceptor(
-      this._dio, this._localStorage, this.authNotifier);
+  CustomInterceptor(this._dio, this._localStorage, this.authNotifier);
 
   /// Storage service used to store cache in local storage
 
@@ -43,7 +42,6 @@ class CustomInterceptor extends QueuedInterceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-
     if (kDebugMode) {
       print('══🌍 🌍  Retrieving data from network 🌍 🌍══');
     }
@@ -60,9 +58,9 @@ class CustomInterceptor extends QueuedInterceptor {
       isNormalRequest = false;
       // get tokens from local storage, Shared-preference / Hive or flutter_secure_storage
       final accessToken =
-      await _localStorage.read(key: StorageConfigs.kAccessToken);
+          await _localStorage.read(key: StorageConfigs.kAccessToken);
       final refreshToken =
-      await _localStorage.read(key: StorageConfigs.kRefreshToken);
+          await _localStorage.read(key: StorageConfigs.kRefreshToken);
 
       if (accessToken == null || refreshToken == null) {
         _performLogout(_dio);
@@ -78,7 +76,7 @@ class CustomInterceptor extends QueuedInterceptor {
         options.headers.addAll(
           <String, String>{
             StorageConfigs.authorization:
-            '${StorageConfigs.bearer} $accessToken'
+                '${StorageConfigs.bearer} $accessToken'
           },
         );
         handler.next(options);
@@ -102,11 +100,11 @@ class CustomInterceptor extends QueuedInterceptor {
           final opts = Options(
               extra: err.requestOptions.extra, method: requestOptions.method);
           _dio.options.headers[StorageConfigs.authorization] =
-          "${StorageConfigs.bearer} $accessToken";
+              "${StorageConfigs.bearer} $accessToken";
           _dio.options.headers[StorageConfigs.accept] =
-          StorageConfigs.applicationJson;
+              StorageConfigs.applicationJson;
           _dio.options.headers[StorageConfigs.retryCount] =
-          1; //setting retry count to 1 to prevent further concurrent calls
+              1; //setting retry count to 1 to prevent further concurrent calls
           final Response response = await _dio.request(requestOptions.path,
               options: opts,
               cancelToken: requestOptions.cancelToken,

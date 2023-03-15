@@ -83,15 +83,16 @@ class _DrawerHeader extends HookConsumerWidget {
               children: [
                 Text(
                   // 'Pleas Login to continue',
-                  'Username',
+                  'John Doe',
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: Colors.white, fontWeight: FontWeight.w600),
                 ),
+                context.emptySizedHeightBoxLow,
                 Text(
-                  'Any other ifno',
+                  'johndoe@gmail.com',
                   style: Theme.of(context)
                       .textTheme
-                      .bodySmall!
+                      .bodyMedium!
                       .copyWith(color: Colors.white, fontSize: 9),
                 )
               ],

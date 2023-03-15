@@ -37,8 +37,15 @@ class _Items extends ConsumerWidget {
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
-            onTap: (){
-              context.router.navigate(const [ClockInRoute(),ScheduleRoute(),ShiftAvailabilityRoute(),ClockInRoute(),MyAvailabilityRoute(),CovidSurveyRoute()].elementAt(index));
+            onTap: () {
+              context.router.navigate(const [
+                ClockInRoute(),
+                ScheduleRoute(),
+                ShiftAvailabilityRoute(),
+                PriorClockInRoute(),
+                MyAvailabilityRoute(),
+                CovidSurveyRoute()
+              ].elementAt(index));
             },
             child: SizedBox(
               height: 80,
@@ -54,8 +61,8 @@ class _Items extends ConsumerWidget {
                     'My Availability',
                     'Covid Survey'
                   ].elementAt(index),
-                  style: context.textTheme.bodyLarge
-                      ?.copyWith(fontWeight: FontWeight.w700),
+                  style: context.textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.w700, color: context.background),
                 )),
               ),
             ),

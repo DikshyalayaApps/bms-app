@@ -79,7 +79,7 @@ class PrimaryButton extends StatelessWidget {
     return SizedBox(
       height: height ?? 40.0,
       child: ElevatedButton(
-        onPressed:  () {
+        onPressed: () {
           onPressed();
         },
         style: ElevatedButton.styleFrom(
@@ -104,9 +104,9 @@ class PrimaryButton extends StatelessWidget {
                   ),
                 Text(title,
                     style: context.textTheme.bodyLarge?.copyWith(
-                          color: textColor ?? Colors.white,
-                          fontSize: textSize ?? 14,
-                        ))
+                      color: textColor ?? Colors.white,
+                      fontSize: textSize ?? 14,
+                    ))
               ],
             ),
       ),
@@ -179,15 +179,17 @@ class PrimaryOutlinedButton extends StatelessWidget {
                     child: icon,
                   ),
                 ),
-             if(title!=null) Text(title!,
-                  style:  textStyle ?? TextStyle(
-                      color: onPressed == null
-                          ? Colors.grey
-                          : (borderColor ?? Theme.of(context).primaryColor),
-                      fontSize: textSize)),
+              if (title != null)
+                Text(title!,
+                    style: textStyle ??
+                        TextStyle(
+                            color: onPressed == null
+                                ? Colors.grey
+                                : (borderColor ??
+                                    Theme.of(context).primaryColor),
+                            fontSize: textSize)),
             ],
           ),
     );
   }
 }
-
