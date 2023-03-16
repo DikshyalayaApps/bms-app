@@ -1,11 +1,9 @@
-import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../widgets/appbar_without_drawer.dart';
-import '../../../widgets/forms/buttons.dart';
 import '../../../widgets/forms/textfields.dart';
 
 class MyAvailabilityPage extends HookConsumerWidget {
@@ -91,13 +89,6 @@ class MyAvailabilityPage extends HookConsumerWidget {
                   ),
                 ],
               ),
-              context.emptySizedHeightBoxLow,
-              Center(
-                  child: PrimaryButton(
-                    onPressed: () {},
-                    title: 'SAVE',
-                    // width: context.highValue,
-                  ))
             ],
           ),
         ),

@@ -55,8 +55,8 @@ class _Items extends ConsumerWidget {
                       context.emptySizedHeightBoxExtraLow,
                       const Text('61 Florence St, Yonkers, NY 10704'),
                       context.emptySizedHeightBoxExtraLow,
-                      PrimaryButton(
-                          width: context.highValue,
+                      PrimaryOutlinedButton(
+                          borderColor: context.textColor,
                           onPressed: () {},
                           title: 'Submit Covid Information'),
                       context.emptySizedHeightBoxExtraLow,

@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 class AppBarWithOutDrawer extends StatelessWidget
     implements PreferredSizeWidget {
   final Widget title;
+  final Widget? trailingWidget;
 
   const AppBarWithOutDrawer({
     required this.title,
+    this.trailingWidget,
     Key? key,
   }) : super(key: key);
 
@@ -25,6 +27,7 @@ class AppBarWithOutDrawer extends StatelessWidget
         },
       ),
       centerTitle: true,
+      actions: [trailingWidget ?? const SizedBox.shrink()],
       title: title,
     );
   }

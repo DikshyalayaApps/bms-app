@@ -11,7 +11,7 @@ class ShiftAvailabilityPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabs = ['Sort by', 'By Date', 'By Distance'];
+    final tabs = ['Date', 'House Distance'];
     final tabBarController =
         useTabController(initialLength: tabs.length, initialIndex: 0);
     return Scaffold(

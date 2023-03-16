@@ -46,7 +46,7 @@ ThemeData appTheme(BuildContext context) {
       onBackground: Colors.white,
       brightness: Brightness.light,
     ),
-    iconTheme: IconThemeData(color: context.primaryColor),
+    iconTheme: IconThemeData(color: context.grey),
     appBarTheme: AppBarTheme(
         color: context.primaryColor,
         iconTheme: const IconThemeData(color: Colors.white, size: 20),

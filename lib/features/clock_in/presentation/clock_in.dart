@@ -33,7 +33,7 @@ class ClockInPage extends HookConsumerWidget {
                 Container(
                   width: double.infinity,
                   padding: context.paddingLow,
-                  decoration: BoxDecoration(color: context.grey2),
+                  decoration: BoxDecoration(color: context.grey3),
                   child: const Text(
                       '3/13/2023: 11:00 PM - 09:00 AM (GHO - 48th Street)'),
                 ),

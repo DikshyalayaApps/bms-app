@@ -5,6 +5,8 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../widgets/appbar_without_drawer.dart';
+import '../../shift_availability/presentation/filter_header_view.dart';
+import 'filter_drawer.dart';
 
 class PriorClockInPage extends HookConsumerWidget {
   const PriorClockInPage({
@@ -13,81 +15,55 @@ class PriorClockInPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final formKey = useMemoized(GlobalKey<FormBuilderState>.new);
-    final state = ref.watch(timeListProvider);
-    final timeList = state.asData?.value ?? [''];
     return Scaffold(
-      appBar: const AppBarWithOutDrawer(title: Text('Prior Clock In')),
-      body: FormBuilder(
-        key: formKey,
-        child: SingleChildScrollView(
-          child: Padding(
+      endDrawer: const FilterDrawer(),
+      appBar: AppBarWithOutDrawer(
+        title: const Text('Prior Clock In'),
+        trailingWidget: Builder(builder: (context) {
+          return Padding(
             padding: context.paddingLow,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Table(
-                    defaultColumnWidth: const IntrinsicColumnWidth(),
-                    border: TableBorder.all(color: context.grey4, width: 1.5),
-                    children: List.generate(20, (index) {
-                      return index == 0
-                          ? TableRow(children: [
-                              _buildHeaderText(
-                                  'Schedule Period', index, context),
-                              _buildHeaderText('House', index, context),
-                              _buildHeaderText('Schedule Date', index, context),
-                              _buildHeaderText('Schedule Time', index, context),
-                              _buildHeaderText('Start Time', index, context),
-                              _buildHeaderText('End Time', index, context),
-                              _buildHeaderText('Meal Time', index, context),
-                              _buildHeaderText(
-                                  'No Meal Reason', index, context),
-                              _buildHeaderText('Total Hours', index, context),
-                            ])
-                          : TableRow(children: [
-                              _buildText('2/18/2023 - 2/24/2023', context),
-                              _buildText('CRCDD-Florence Street', context),
-                              _buildText('2/18/2023', context),
-                              _buildText('10:00 PM-06:00 AM', context),
-                              _buildText('10:00 PM', context),
-                              _buildText('06:00 AM', context),
-                              _buildText('', context),
-                              _buildText('One-to-one', context),
-                              _buildText('8.00', context),
-                            ]);
-                    }),
-                  ),
-                ),
-              ],
+            child: InkWell(
+              onTap: () {
+                Scaffold.of(context).openEndDrawer();
+              },
+              child: Icon(
+                Icons.filter_alt_outlined,
+                color: context.background,
+              ),
             ),
-          ),
-        ),
+          );
+        }),
       ),
-    );
-  }
-
-  Padding _buildHeaderText(String ts, int index, BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(
-        ts,
-        style: TextStyle(
-            fontSize: 14,
-            fontWeight: index == 0 ? FontWeight.bold : null,
-            color: index == 0 ? context.textColor : null),
-      ),
-    );
-  }
-
-  Padding _buildText(String ts, BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Text(
-        ts,
-      ),
+      body: ListView.builder(
+          itemCount: 4,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+              child: Container(
+                padding: context.paddingLow,
+                decoration: BoxDecoration(
+                    color: context.grey5,
+                    border: Border.all(color: context.grey3)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Schedule Period: 2/18/2023 - 2/24/2023'),
+                    context.emptySizedHeightBoxExtraLow,
+                    const Text('Schedule Date: 2/18/2023 '),
+                    context.emptySizedHeightBoxExtraLow,
+                    const Text('Schedule Time: 10:00 PM-06:00 AM'),
+                    context.emptySizedHeightBoxExtraLow,
+                    const Text('Actual Time: 10:00 PM-06:00 AM'),
+                    context.emptySizedHeightBoxExtraLow,
+                    const Text('Meal Time: 30 Minutes'),
+                    context.emptySizedHeightBoxExtraLow,
+                    const Text('Total Hours: 7.50'),
+                  ],
+                ),
+              ),
+            );
+          }),
     );
   }
 }

@@ -152,7 +152,6 @@ class PrimaryOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        backgroundColor: borderColor ?? Theme.of(context).primaryColor,
         elevation: 0,
         minimumSize: Size(width ?? double.infinity, height ?? 40.0),
         side: BorderSide(
