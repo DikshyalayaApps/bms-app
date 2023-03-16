@@ -21,7 +21,8 @@ class FilterViewBuilder extends HookConsumerWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Expanded(child: Text('Filter data by')), // 3/11/2023 : 10:00 PM - 06:00 AM (CRCDD - Florence Street)
+                const Expanded(child: Text('Filter data by')),
+                // 3/11/2023 : 10:00 PM - 06:00 AM (CRCDD - Florence Street)
                 InkWell(
                   onTap: () {
                     Scaffold.of(context).openEndDrawer();
