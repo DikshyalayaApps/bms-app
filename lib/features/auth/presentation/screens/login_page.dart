@@ -30,7 +30,7 @@ class LoginPage extends ConsumerWidget {
       : super(key: key);
 
   void _loginSuccess(BuildContext context) {
-    CustomToast.success('Logged in successfully');
+    AppToast.success('Logged in successfully');
     //fetch profile on login
     if (authGuard == false) {
       context.router.pop(true);

@@ -1,12 +1,8 @@
 import 'package:bms_app/core/utils/context_extension.dart';
-import 'package:bms_app/features/clock_in/presentation/time_data_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../widgets/appbar_without_drawer.dart';
-import '../../shift_availability/presentation/filter_header_view.dart';
-import 'filter_drawer.dart';
+import 'filter_bottom_sheet.dart';
 
 class PriorClockInPage extends HookConsumerWidget {
   const PriorClockInPage({
@@ -16,7 +12,6 @@ class PriorClockInPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      endDrawer: const FilterDrawer(),
       appBar: AppBarWithOutDrawer(
         title: const Text('Prior Clock In'),
         trailingWidget: Builder(builder: (context) {
@@ -24,7 +19,11 @@ class PriorClockInPage extends HookConsumerWidget {
             padding: context.paddingLow,
             child: InkWell(
               onTap: () {
-                Scaffold.of(context).openEndDrawer();
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return const FilterBottomSheet();
+                    });
               },
               child: Icon(
                 Icons.filter_alt_outlined,

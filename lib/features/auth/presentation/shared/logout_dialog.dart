@@ -9,7 +9,7 @@ class LogOutDialog extends StatelessWidget {
   const LogOutDialog(this.logout, {Key? key}) : super(key: key);
 
   Future<void> _onLogOutSuccess(BuildContext context) async {
-    CustomToast.success('Successfully logged out');
+    AppToast.success('Successfully logged out');
     Navigator.pop(context);
   }
 

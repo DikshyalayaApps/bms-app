@@ -2,7 +2,7 @@ import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class CustomToast {
+class AppToast {
   final FToast _fToast = FToast();
 
   void custom(BuildContext context, IconData iconData,
