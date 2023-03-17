@@ -14,7 +14,7 @@ class AppLogo extends StatelessWidget {
     return AspectRatio(
       aspectRatio: aspectRatio,
       child: Image.asset(
-    UIAssets.getImage('launcher_icon.png'),
+    UIAssets.getImage('app_logo.png'),
       ),
     );
   }
