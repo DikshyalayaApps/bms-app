@@ -1,6 +1,5 @@
 import 'package:bms_app/core/utils/context_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class FilterViewBuilder extends HookConsumerWidget {

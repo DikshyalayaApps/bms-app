@@ -68,7 +68,7 @@ class ShiftAvailabilityPage extends HookConsumerWidget {
                                     contentPadding: EdgeInsets.zero,
                                     value: false,
                                     onChanged: (val) {}),
-                                if (index != 4 - 1) Divider()
+                                if (index != 4 - 1) const Divider()
                               ],
                             ),
                           ),
